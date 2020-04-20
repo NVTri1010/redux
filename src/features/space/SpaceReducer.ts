@@ -107,7 +107,10 @@ const spaceUpdatedEventReceived = <ReceivedSpace extends Space<ObjectsCustom>>(
     byId: { ...state.byId },
   };
 
-  newState.byId[payload.data.id] = payload.data;
+  newState.byId[payload.data.id] = {
+    ...state.byId[payload.data.id],
+    ...payload.data,
+  };
 
   return newState;
 };
